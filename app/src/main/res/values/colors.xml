@@ -11,4 +11,5 @@
     <color name="main_light_blue">#EEF4FF</color>
 
     <!-- extra colors -->
+    <color name="button_enable_false">#C4C4C4</color>
 </resources>
