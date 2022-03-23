@@ -21,4 +21,10 @@
         <item name="backgroundTint">@color/selector_button_default</item>
         <item name="cornerRadius">@dimen/squareButtonRadius</item>
     </style>
+
+    <style name="DefaultEditText" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/selector_edittext_default</item>
+        <item name="boxStrokeWidth">@dimen/defaultEditTextStrokeWidth</item>
+        <item name="cornerRadius">@dimen/defaultEditTextRadius</item>
+    </style>
 </resources>

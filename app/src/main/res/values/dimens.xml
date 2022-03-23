@@ -2,4 +2,7 @@
 <resources>
     <dimen name="squareButtonRadius">0dp</dimen>
     <dimen name="roundButtonRadius">4dp</dimen>
+
+    <dimen name="defaultEditTextRadius">4dp</dimen>
+    <dimen name="defaultEditTextStrokeWidth">1dp</dimen>
 </resources>
