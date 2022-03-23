@@ -2,10 +2,10 @@
 <resources>
     <declare-styleable name="BadgeRoundImageView">
         <attr name="bigCircleImgSrc" format="reference|integer"/>
-        <attr name="bigCircleImgBackground" format="reference|integer|color"/>
-        <attr name="bigCircleImgSize" format="reference|integer|dimension"/>
-        <attr name="badgeSrc" format="reference|integer"/>
-        <attr name="badgeBackground" format="reference|integer|color"/>
+        <attr name="bigCircleBackgroundColor" format="reference|integer|color"/>
+        <attr name="bigCircleSize" format="reference|integer|dimension"/>
+        <attr name="badgeImgSrc" format="reference|integer"/>
+        <attr name="badgeBackgroundColor" format="reference|integer|color"/>
         <attr name="badgeSize" format="reference|integer|dimension"/>
     </declare-styleable>
 </resources>
