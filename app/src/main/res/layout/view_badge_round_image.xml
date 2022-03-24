@@ -3,30 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
-    <androidx.cardview.widget.CardView
-        android:id="@+id/view_big_circle"
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/img_big_circle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cardElevation="0dp"
+        app:shapeAppearanceOverlay="@style/RoundImageView"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-        <ImageView
-            android:id="@+id/img_big_circle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
-        android:id="@+id/view_badge"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/img_badge_symbol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cardElevation="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/view_big_circle"
-        app:layout_constraintEnd_toEndOf="@+id/view_big_circle">
-        <ImageView
-            android:id="@+id/img_badge_symbol"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    </androidx.cardview.widget.CardView>
+        app:shapeAppearanceOverlay="@style/RoundImageView"
+        app:layout_constraintBottom_toBottomOf="@+id/img_big_circle"
+        app:layout_constraintEnd_toEndOf="@+id/img_big_circle"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -45,7 +45,6 @@ class BadgeRoundImageView : ConstraintLayout {
                 this.height = bigCircleSize
                 this.width = bigCircleSize
             }
-            binding.viewBigCircle.radius = bigCircleSize.toFloat()
         }
 
         binding.imgBadgeSymbol.apply {
@@ -59,7 +58,6 @@ class BadgeRoundImageView : ConstraintLayout {
                 this.height = badgeSize
                 this.width = badgeSize
             }
-            binding.viewBadge.radius = badgeSize.toFloat()
         }
         typedArray.recycle()
     }
@@ -75,7 +73,6 @@ class BadgeRoundImageView : ConstraintLayout {
             this.height = imgSize
             this.width = imgSize
         }
-        binding.viewBigCircle.radius = imgSize.toFloat()
     }
     fun setBadgeImgSrc(imgResId: Int) {
         binding.imgBadgeSymbol.setImageResource(imgResId)
@@ -88,6 +85,5 @@ class BadgeRoundImageView : ConstraintLayout {
             this.height = imgSize
             this.width = imgSize
         }
-        binding.viewBadge.radius = imgSize.toFloat()
     }
 }
