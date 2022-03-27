@@ -7,6 +7,6 @@
 ### 변경 전 VS 변경 후
 |변경 전|변경 후|
 |---|---|
-|<img src="" width="" />|<img src="" width="" />|
+|<img src="" width="300" />|<img src="" width="300" />|
 
 ### 참고
