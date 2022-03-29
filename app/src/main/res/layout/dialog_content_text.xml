@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="@dimen/padding_dialog_common"
+    android:paddingVertical="23dp">
+
+    <TextView
+        android:id="@+id/text_dialog_content"
+        style="@style/Dialog.Content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="텍스트" />
+
+</FrameLayout>
