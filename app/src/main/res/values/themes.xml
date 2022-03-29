@@ -20,5 +20,5 @@
         <item name="android:textColorHint">@color/text_hint_gray</item>
         <item name="android:textSize">18dp</item>
     </style>
-    
+
 </resources>

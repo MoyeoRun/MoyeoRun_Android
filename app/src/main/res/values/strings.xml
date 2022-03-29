@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">MoyeoRun-android</string>
 
-    <!-- common string -->
+    <!-- Common -->
     <string name="cancel">취소</string>
     <string name="ok">확인</string>
 
