@@ -14,5 +14,9 @@
         <item name="android:windowLightStatusBar">true</item>
         <!-- Customize your theme here. -->
         <item name="android:colorBackground">@color/main_white</item>
+        <item name="android:textColor">@color/text_default_black</item>
+        <item name="android:editTextColor">@color/text_default_black</item>
+        <item name="android:textSize">18dp</item>
     </style>
+
 </resources>
