@@ -17,4 +17,7 @@
     <color name="text_gray">#828282</color>
     <color name="text_hint_gray">#A9A9A9</color>
 
+    <!-- Line colors -->
+    <color name="line_dialog_divider">#EBECEF</color>
+
 </resources>

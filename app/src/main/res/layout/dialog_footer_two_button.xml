@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:paddingHorizontal="@dimen/padding_dialog_common"
+    android:paddingBottom="@dimen/padding_dialog_common">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_negative_dialog_footer"
+        style="@style/Dialog.Button.Negative"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4.5dp"
+        android:layout_weight="1"
+        tools:text="Negative" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_positive_dialog_footer"
+        style="@style/Dialog.Button.Positive"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4.5dp"
+        android:layout_weight="1"
+        tools:text="Positive" />
+
+</LinearLayout>

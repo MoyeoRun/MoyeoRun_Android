@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Dialog" />
+
+    <style name="Dialog.Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/line_dialog_divider</item>
+    </style>
+
+    <style name="Dialog.Background">
+        <item name="android:layout_width">297dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/round_background_12</item>
+    </style>
+
+    <style name="Dialog.Title">
+        <item name="android:textColor">@color/text_default_black</item>
+        <item name="android:textSize">22dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="Dialog.Content">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/text_default_black</item>
+        <item name="android:textSize">18dp</item>
+    </style>
+
+    <style name="Dialog.Button">
+        <item name="android:minWidth">0dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="Dialog.Button.Negative">
+        <item name="android:background">@drawable/round_border_background_4</item>
+        <item name="android:textColor">@color/text_default_black</item>
+    </style>
+
+    <style name="Dialog.Button.Positive">
+        <item name="android:background">@drawable/round_background_4</item>
+        <item name="android:backgroundTint">@color/main_blue</item>
+        <item name="android:textColor">@color/main_white</item>
+    </style>
+</resources>

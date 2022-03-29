@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        style="@style/Dialog.Background"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/header_text_dialog"
+            layout="@layout/dialog_header_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <View style="@style/Dialog.Divider" />
+
+        <!-- 커스텀 컨텐츠가 들어올 레이아웃 -->
+        <FrameLayout
+            android:id="@+id/content_custom_dialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <include
+            android:id="@+id/footer_text_dialog"
+            layout="@layout/dialog_footer_two_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</FrameLayout>
