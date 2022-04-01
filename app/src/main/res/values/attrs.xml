@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <declare-styleable name="DefaultButton">
-        <attr name="backgroundTint"/>
-        <attr name="roundButton" format="boolean"/>
-    </declare-styleable>
-
-    <attr name="DefaultButtonStyle" format="reference"/>
-</resources>
