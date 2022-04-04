@@ -7,8 +7,3 @@ data class Success<T>(
     val message: String,
     val data: T
 )
-
-data class Failure<T>(
-    val message: String,
-    val error: T
-)
