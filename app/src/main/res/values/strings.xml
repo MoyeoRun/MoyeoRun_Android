@@ -5,4 +5,7 @@
     <string name="cancel">취소</string>
     <string name="ok">확인</string>
 
+    <!-- Login -->
+    <string name="login_button_start">시작하기</string>
+    <string name="login_button_google">구글 계정으로 로그인</string>
 </resources>
