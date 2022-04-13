@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <declare-styleable name="RectangleButton">
-        <attr name="android:background"/>
-        <attr name="android:textColor"/>
-    </declare-styleable>
-</resources>
