@@ -17,6 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:shapeAppearanceOverlay="@style/RoundImageView"
+        android:scaleType="center"
         app:layout_constraintTop_toTopOf="@id/img_big_circle"
         app:layout_constraintBottom_toBottomOf="@+id/img_big_circle"
         app:layout_constraintStart_toStartOf="@id/img_big_circle"
