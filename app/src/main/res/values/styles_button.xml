@@ -7,6 +7,7 @@
         <item name="android:background">@drawable/selector_rectangle_button</item>
         <item name="android:textSize">21dp</item>
         <item name="android:textColor">@drawable/selector_rectangle_button_text</item>
+        <item name="android:minHeight">88dp</item>
     </style>
 
     <style name="RoundButtonTheme">
