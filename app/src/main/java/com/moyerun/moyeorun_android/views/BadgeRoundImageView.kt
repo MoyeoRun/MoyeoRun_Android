@@ -86,14 +86,11 @@ class BadgeRoundImageView @JvmOverloads constructor(
     }
 
     @RequiresPermission(Manifest.permission.INTERNET)
-    @Throws(IOException::class)
     fun setBigCircleImgSrc(imgUrl: String, isImageCropped: Boolean = false) {
-        if (Patterns.WEB_URL.matcher(imgUrl).matches()) {
-            if (isImageCropped) {
-                Glide.with(context).load(imgUrl).centerCrop().into(binding.imgBigCircle)
-            } else
-                Glide.with(context).load(imgUrl).into(binding.imgBigCircle)
-        }
+        if (isImageCropped) {
+            Glide.with(context).load(imgUrl).centerCrop().into(binding.imgBigCircle)
+        } else
+            Glide.with(context).load(imgUrl).into(binding.imgBigCircle)
     }
 
     fun setBigCircleImageBg(@ColorRes bgResId: Int) {
@@ -105,14 +102,11 @@ class BadgeRoundImageView @JvmOverloads constructor(
     }
 
     @RequiresPermission(Manifest.permission.INTERNET)
-    @Throws(IOException::class)
     fun setBadgeImgSrc(imgUrl: String, isImageCropped: Boolean = false) {
-        if (Patterns.WEB_URL.matcher(imgUrl).matches()) {
-            if (isImageCropped) {
-                Glide.with(context).load(imgUrl).centerCrop().into(binding.imgBadgeSymbol)
-            } else
-                Glide.with(context).load(imgUrl).into(binding.imgBadgeSymbol)
-        }
+        if (isImageCropped) {
+            Glide.with(context).load(imgUrl).centerCrop().into(binding.imgBadgeSymbol)
+        } else
+            Glide.with(context).load(imgUrl).into(binding.imgBadgeSymbol)
     }
 
     fun setBadgeImageBg(@ColorRes bgResId: Int) {
