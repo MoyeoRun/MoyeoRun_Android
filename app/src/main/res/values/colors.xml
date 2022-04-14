@@ -9,8 +9,13 @@
     <color name="main_green">#00F2B8</color>
     <color name="main_yellow">#FFDD64</color>
     <color name="main_light_blue">#EEF4FF</color>
+    
+    <!-- text colors -->
+    <color name="text_default_black">#333333</color>
+    <color name="text_gray">#828282</color>
+    <color name="text_hint_gray">#A9A9A9</color>
 
-    <!-- extra colors -->
+    <!-- button colors -->
     <color name="button_pressed_true">#0047D0</color>
     <color name="button_enable_false">#C4C4C4</color>
     <color name="button_text_enable_false">#828282</color>
