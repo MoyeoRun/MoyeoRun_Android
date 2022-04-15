@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BadgeRoundImageView">
+        <attr name="bigCircleImgSrc" format="reference"/>
+        <attr name="bigCircleBackgroundColor" format="color"/>
+        <attr name="badgeImgSrc" format="reference"/>
+        <attr name="badgeBackgroundColor" format="color"/>
+        <attr name="badgeSize" format="reference|integer|dimension"/>
+    </declare-styleable>
+</resources>
