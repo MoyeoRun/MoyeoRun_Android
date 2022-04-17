@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.provider.Settings
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.Identity
@@ -15,12 +16,16 @@ import com.google.android.gms.common.api.CommonStatusCodes
 import com.moyerun.moyeorun_android.BuildConfig
 import com.moyerun.moyeorun_android.R
 import com.moyerun.moyeorun_android.common.Lg
+import com.moyerun.moyeorun_android.common.extension.observeEvent
 import com.moyerun.moyeorun_android.common.extension.showNetworkErrorToast
 import com.moyerun.moyeorun_android.common.extension.toast
 import com.moyerun.moyeorun_android.databinding.ActivityLoginBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
+
+    private val viewModel: LoginViewModel by viewModels()
 
     private val oneTapClient: SignInClient by lazy { Identity.getSignInClient(this) }
     private val signInRequest: BeginSignInRequest by lazy { getBeginSignInRequest() }
@@ -32,9 +37,8 @@ class LoginActivity : AppCompatActivity() {
                     val credential = oneTapClient.getSignInCredentialFromIntent(result.data)
                     val idToken = credential.googleIdToken
                     if (idToken != null) {
-                        //Todo: 서버에 보내서 인증 @winter223
-                            // Todo: Firebase crashlytics userId 세팅
-                        Lg.d("Success. token : $idToken")
+                        Lg.i("Success. token : $idToken")
+                        viewModel.signIn(idToken)
                     } else {
                         showUnknownErrorToast()
                         //Todo: #31 을 rebase 하고 주석 풀기
@@ -61,6 +65,22 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        observeEvent(viewModel.loginEvent) {
+            when (it) {
+                LoginEvent.Success -> {
+                    // Todo: 메인화면 진입
+                    Lg.d("Login!")
+                }
+                LoginEvent.NewUser -> {
+                    // Todo: 회원가입
+                    Lg.d("New user!")
+                }
+                LoginEvent.Error -> {
+                    showUnknownErrorToast()
+                }
+            }
+        }
 
         binding.buttonLoginGoogle.setOnClickListener {
             oneTapClient.beginSignIn(signInRequest)
