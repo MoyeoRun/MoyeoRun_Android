@@ -22,6 +22,7 @@ android {
         def localProperties = new Properties()
         localProperties.load(rootProject.file('./local.properties').newDataInputStream())
         buildConfigField("String", "BASE_URL", localProperties['baseUrl'])
+        buildConfigField("String", "WEB_CLIENT_ID", localProperties["webClientId"])
     }
 
     signingConfigs {
@@ -89,6 +90,8 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:29.2.0')
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-crashlytics-ktx'
+    implementation 'com.google.firebase:firebase-auth-ktx'
+    implementation 'com.google.android.gms:play-services-auth:20.1.0'
 
     // Hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"
