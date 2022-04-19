@@ -1,6 +1,9 @@
 package com.moyerun.moyeorun_android.common.extension
 
+import android.text.TextUtils
 import android.view.View
+import android.widget.TextView
+import androidx.annotation.DrawableRes
 
 fun View.setOnDebounceClickListener(interval: Long = 1000L, action: (View?) -> Unit) {
     val debounceClickListener = object : View.OnClickListener {
@@ -16,4 +19,14 @@ fun View.setOnDebounceClickListener(interval: Long = 1000L, action: (View?) -> U
         }
     }
     setOnClickListener(debounceClickListener)
+}
+
+fun TextView.setTextIfNew(text: CharSequence?) {
+    if (TextUtils.equals(this.text, text).not()) {
+        setText(text)
+    }
+}
+
+fun TextView.setDrawableEnd(@DrawableRes resId: Int?) {
+    setCompoundDrawablesWithIntrinsicBounds(0, 0, resId ?: 0, 0)
 }

@@ -20,6 +20,7 @@ import com.moyerun.moyeorun_android.common.extension.observeEvent
 import com.moyerun.moyeorun_android.common.extension.showNetworkErrorToast
 import com.moyerun.moyeorun_android.common.extension.toast
 import com.moyerun.moyeorun_android.databinding.ActivityLoginBinding
+import com.moyerun.moyeorun_android.profile.ProfileEditActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -73,8 +74,7 @@ class LoginActivity : AppCompatActivity() {
                     Lg.d("Login!")
                 }
                 LoginEvent.NewUser -> {
-                    // Todo: 회원가입
-                    Lg.d("New user!")
+                    ProfileEditActivity.startActivity(this)
                 }
                 LoginEvent.Error -> {
                     showUnknownErrorToast()
