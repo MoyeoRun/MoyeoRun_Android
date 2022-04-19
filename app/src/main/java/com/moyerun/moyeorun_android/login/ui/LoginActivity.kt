@@ -1,4 +1,4 @@
-package com.moyerun.moyeorun_android.login
+package com.moyerun.moyeorun_android.login.ui
 
 import android.content.Intent
 import android.content.IntentSender
@@ -69,7 +69,7 @@ class LoginActivity : AppCompatActivity() {
 
         observeEvent(viewModel.loginEvent) {
             when (it) {
-                LoginEvent.Success -> {
+                LoginEvent.RegisteredUser -> {
                     // Todo: 메인화면 진입
                     Lg.d("Login!")
                 }

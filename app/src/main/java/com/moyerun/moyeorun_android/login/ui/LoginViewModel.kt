@@ -1,9 +1,10 @@
-package com.moyerun.moyeorun_android.login
+package com.moyerun.moyeorun_android.login.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.moyerun.moyeorun_android.common.EventLiveData
 import com.moyerun.moyeorun_android.common.MutableEventLiveData
+import com.moyerun.moyeorun_android.login.data.LoginRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -26,12 +27,14 @@ class LoginViewModel @Inject constructor(
     fun signIn(idToken: String) {
         viewModelScope.launch {
             _isLoading.value = true
+            // Todo: 반환 타입 결정 후 분기
+            // Todo: Firebase crashlytics userId 세팅
+            // Todo: SharedPreference 에 유저 메타데이터 세팅
             val result = loginRepository.signIn(idToken)
-            if (result is LoginRepository.ApiResponse.Success) {
-                // Todo: Firebase crashlytics userId 세팅
-                _loginEvent.event = LoginEvent.Success
+            _loginEvent.event = if (result.isNewUser) {
+                LoginEvent.NewUser
             } else {
-                _loginEvent.event = LoginEvent.Error
+                LoginEvent.RegisteredUser
             }
             _isLoading.value = false
         }

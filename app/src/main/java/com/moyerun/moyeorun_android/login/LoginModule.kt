@@ -1,5 +1,6 @@
 package com.moyerun.moyeorun_android.login
 
+import com.moyerun.moyeorun_android.login.data.LoginRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
