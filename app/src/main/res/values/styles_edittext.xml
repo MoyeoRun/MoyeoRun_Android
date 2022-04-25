@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="BorderEditText" parent="Widget.AppCompat.EditText">
+        <item name="android:background">@drawable/shape_border_edittext</item>
+    </style>
+</resources>

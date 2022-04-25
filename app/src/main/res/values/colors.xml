@@ -10,7 +10,6 @@
     <color name="main_yellow">#FFDD64</color>
     <color name="main_light_blue">#EEF4FF</color>
 
-    <!-- extra colors -->
-    <color name="button_enable_false">#C4C4C4</color>
-
+    <!-- edittext colors -->
+    <color name="edittext_default_stroke">#D4D4D4</color>
 </resources>
