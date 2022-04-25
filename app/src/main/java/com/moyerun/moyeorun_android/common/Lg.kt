@@ -31,17 +31,17 @@ object Lg {
     }
 
     fun fd(msg: String) {
-        Log.e(tag, msg)
+        Log.d(tag, msg)
         Firebase.crashlytics.recordMessage(LogLevel.Debug, msg)
     }
 
     fun fd(t: Throwable) {
-        Log.e(tag, Log.getStackTraceString(t))
+        Log.d(tag, Log.getStackTraceString(t))
         Firebase.crashlytics.recordException(LogLevel.Debug, t)
     }
 
     fun fd(msg: String, t: Throwable) {
-        Log.e(tag, Log.getStackTraceString(t))
+        Log.d(tag, Log.getStackTraceString(t))
         Firebase.crashlytics.recordException(LogLevel.Debug, msg, t)
     }
 
@@ -62,17 +62,17 @@ object Lg {
     }
 
     fun fw(msg: String) {
-        Log.e(tag, msg)
+        Log.w(tag, msg)
         Firebase.crashlytics.recordMessage(LogLevel.Warning, msg)
     }
 
     fun fw(t: Throwable) {
-        Log.e(tag, Log.getStackTraceString(t))
+        Log.w(tag, Log.getStackTraceString(t))
         Firebase.crashlytics.recordException(LogLevel.Warning, t)
     }
 
     fun fw(msg: String, t: Throwable) {
-        Log.e(tag, Log.getStackTraceString(t))
+        Log.w(tag, Log.getStackTraceString(t))
         Firebase.crashlytics.recordException(LogLevel.Warning, msg, t)
     }
 
@@ -93,17 +93,17 @@ object Lg {
     }
 
     fun fi(msg: String) {
-        Log.e(tag, msg)
+        Log.i(tag, msg)
         Firebase.crashlytics.recordMessage(LogLevel.Info, msg)
     }
 
     fun fi(t: Throwable) {
-        Log.e(tag, Log.getStackTraceString(t))
+        Log.i(tag, Log.getStackTraceString(t))
         Firebase.crashlytics.recordException(LogLevel.Info, t)
     }
 
     fun fi(msg: String, t: Throwable) {
-        Log.e(tag, Log.getStackTraceString(t))
+        Log.i(tag, Log.getStackTraceString(t))
         Firebase.crashlytics.recordException(LogLevel.Info, msg, t)
     }
 
