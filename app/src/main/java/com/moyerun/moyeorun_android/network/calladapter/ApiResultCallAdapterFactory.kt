@@ -1,7 +1,5 @@
-package com.moyerun.moyeorun_android.network.calladapter
+package com.moyerun.moyeorun_android.network.callAdapter
 
-import com.moyerun.moyeorun_android.network.callAdapter.ApiResult
-import com.moyerun.moyeorun_android.network.callAdapter.ApiResultCallAdapter
 import retrofit2.Call
 import retrofit2.CallAdapter
 import retrofit2.Retrofit

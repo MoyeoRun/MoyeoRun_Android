@@ -2,12 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.moyerun.moyeorun_android">
 
-<<<<<<< HEAD
-    <uses-permission android:name="android.permission.INTERNET" />
-=======
     <uses-permission android:name="android.permission.INTERNET"/>
 
->>>>>>> [#17] 통신을 위한 네트워크 관련 베이스 코드 작성
     <application
         android:name=".MoyeoRunApplication"
         android:allowBackup="true"

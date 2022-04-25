@@ -1,6 +1,6 @@
 package com.moyerun.moyeorun_android.network.client
 
-import com.moyerun.moyeorun_android.network.calladapter.ApiResultCallAdapterFactory
+import com.moyerun.moyeorun_android.network.callAdapter.ApiResultCallAdapterFactory
 import com.moyerun.moyeorun_android.network.api.ApiService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
