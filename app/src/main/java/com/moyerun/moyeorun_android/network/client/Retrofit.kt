@@ -5,7 +5,7 @@ import com.moyerun.moyeorun_android.network.api.ApiService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-private const val BASE_URL = "https://api.github.com/"
+private const val BASE_URL = "https://d8181ccb-4d29-48c4-a63e-5f45735120f9.mock.pstmn.io/"
 
 val retrofit: Retrofit = Retrofit.Builder()
     .baseUrl(BASE_URL)

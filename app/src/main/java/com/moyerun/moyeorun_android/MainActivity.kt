@@ -18,12 +18,22 @@ class MainActivity : AppCompatActivity() {
 
     private fun apiCallTest() {
         GlobalScope.launch {
-            val response = apiService.getUserRepoList("choheeis")
-            when (response) {
+            val response1 = apiService.getSuccess()
+            val response2 = apiService.getFailure()
+            when (response1) {
                 is ApiResult.Success -> {
-                    Lg.d("getUserRepoList Success ${response.body.data}") }
+                    Lg.d("postman test Success response 2 ${response1.body.data}")
+                }
                 is ApiResult.Failure -> {
-                    Lg.d("getUserRepoList ApiError ${response.errorBody.message}")
+                    Lg.d("postman test Failure response 2 ${response1.errorBody.message}")
+                }
+            }
+            when (response2) {
+                is ApiResult.Success -> {
+                    Lg.d("postman test Success response 3 ${response2.body.data}")
+                }
+                is ApiResult.Failure -> {
+                    Lg.d("postman test Failure response 3 ${response2.errorBody.message}")
                 }
             }
         }
