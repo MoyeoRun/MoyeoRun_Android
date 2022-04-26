@@ -14,5 +14,7 @@
     <!-- Profile -->
     <string name="profile_name">이름</string>
     <string name="profile_nickname">닉네임</string>
+    <string name="profile_button_image_select_gallery">갤러리에서 선택</string>
+    <string name="profile_button_image_select_default">기본 이미지에서 선택</string>
 
 </resources>

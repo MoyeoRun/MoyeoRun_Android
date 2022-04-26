@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        style="@style/Dialog.Background"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/Dialog.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="22dp"
+            android:text="프로필 사진" />
+
+        <View style="@style/Dialog.Divider" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_image_select_gallery"
+            style="@style/Dialog.Button.VerticalLinear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/profile_button_image_select_gallery" />
+
+        <View style="@style/Dialog.Divider" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_image_select_default"
+            style="@style/Dialog.Button.VerticalLinear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/profile_button_image_select_default" />
+
+    </LinearLayout>
+
+</FrameLayout>
