@@ -8,9 +8,7 @@ import android.widget.EditText
 import androidx.activity.viewModels
 import androidx.core.widget.doAfterTextChanged
 import com.moyerun.moyeorun_android.R
-import com.moyerun.moyeorun_android.common.extension.repeatOnStart
-import com.moyerun.moyeorun_android.common.extension.setDrawableEnd
-import com.moyerun.moyeorun_android.common.extension.setTextIfNew
+import com.moyerun.moyeorun_android.common.extension.*
 import com.moyerun.moyeorun_android.databinding.ActivityProfileBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
@@ -47,6 +45,19 @@ class ProfileEditActivity : AppCompatActivity() {
 
         binding.edittextProfileNickname.doAfterTextChanged {
             viewModel.onNicknameChanged(it?.toString().orEmpty())
+        }
+
+        binding.badgeimageviewProfileImage.setOnDebounceClickListener {
+            showAllowingStateLoss("selectImage") {
+                ProfileImageSelectDialogFragment.getInstance(
+                    onGalleryClick = {
+                        // Todo : 갤러리 선택 화면
+                    },
+                    onDefaultImagesClick = {
+                        // Todo : 기본 이미지 선택 화면
+                    }
+                )
+            }
         }
 
         repeatOnStart {

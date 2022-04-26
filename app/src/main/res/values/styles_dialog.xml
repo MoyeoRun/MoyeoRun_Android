@@ -27,6 +27,12 @@
         <item name="android:minHeight">0dp</item>
         <item name="android:paddingVertical">21dp</item>
         <item name="android:textSize">16dp</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="Dialog.Button.VerticalLinear">
+        <item name="android:foreground">?android:selectableItemBackgroundBorderless</item>
+        <item name="android:paddingVertical">18dp</item>
     </style>
 
     <style name="Dialog.Button.Negative">
