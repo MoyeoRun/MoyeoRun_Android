@@ -1,6 +1,4 @@
-package com.moyerun.moyeorun_android.network.callAdapter
-
-import com.moyerun.moyeorun_android.network.api.Error
+package com.moyerun.moyeorun_android.network.calladapter
 
 /**
  * Success : API 호출 성공 시, body를 Wrapping 합니다.
@@ -8,5 +6,5 @@ import com.moyerun.moyeorun_android.network.api.Error
  */
 sealed class ApiResult<out T> {
     data class Success<T>(val body: T) : ApiResult<T>()
-    data class Failure(val errorBody: Error) : ApiResult<Nothing>()
+    data class Failure(val exception: Throwable) : ApiResult<Nothing>()
 }

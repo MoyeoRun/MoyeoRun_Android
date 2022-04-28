@@ -1,4 +1,4 @@
-package com.moyerun.moyeorun_android.network.callAdapter
+package com.moyerun.moyeorun_android.network.calladapter
 
 import retrofit2.Call
 import retrofit2.CallAdapter

@@ -1,6 +1,6 @@
 package com.moyerun.moyeorun_android.network.api
 
-import com.moyerun.moyeorun_android.network.callAdapter.ApiResult
+import com.moyerun.moyeorun_android.network.calladapter.ApiResult
 import retrofit2.http.GET
 
 interface ApiService {
