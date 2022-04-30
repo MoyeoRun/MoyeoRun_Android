@@ -26,9 +26,9 @@ class MainActivity : AppCompatActivity() {
                     Lg.d("postman test Success response 2 ${response1.body.data}")
                 }
                 is ApiResult.Failure -> {
-                    when (response1.exception) {
+                    when (response1.throwable) {
                         is ApiException -> {
-                            Lg.d("postman test Failure response 2 ${response1.exception.message}")
+                            Lg.d("postman test Failure response 2 ${response1.throwable.message}")
                         }
                     }
                 }
@@ -38,9 +38,9 @@ class MainActivity : AppCompatActivity() {
                     Lg.d("postman test Success response 3 ${response2.body.data}")
                 }
                 is ApiResult.Failure -> {
-                    when (response2.exception) {
+                    when (response2.throwable) {
                         is ApiException -> {
-                            Lg.d("postman test Failure response 2 ${response2.exception.message}")
+                            Lg.d("postman test Failure response 2 ${response2.throwable.message}")
                         }
                     }
                 }
