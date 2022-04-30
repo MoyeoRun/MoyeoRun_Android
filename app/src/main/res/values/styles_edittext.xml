@@ -8,7 +8,6 @@
 
     <!-- Todo: 배경 이미지 변경. BorderEditText 머지 되면 parent 로 둬야함. -->
     <style name="Profile.Input">
-        <item name="android:textStyle">bold</item>
         <item name="android:textSize">18dp</item>
         <item name="android:paddingHorizontal">21dp</item>
         <item name="android:paddingVertical">15dp</item>

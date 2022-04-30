@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.EditText
+import android.widget.RadioButton
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -72,6 +73,15 @@ class ProfileEditActivity : AppCompatActivity() {
             }
         }
 
+        binding.radiogroupProfileGender.setOnCheckedChangeListener { _, checkedId ->
+            val gender = when (checkedId) {
+                R.id.radiobutton_profile_man -> Gender.MAN
+                R.id.radiobutton_profile_woman -> Gender.WOMAN
+                else -> Gender.NONE
+            }
+            viewModel.onGenderChanged(gender)
+        }
+
         binding.buttonProfileConfirm.setOnDebounceClickListener {
             if (isNewProfile) {
                 viewModel.signUp()
@@ -103,6 +113,18 @@ class ProfileEditActivity : AppCompatActivity() {
                         binding.badgeimageviewProfileImage.setBigCircleImgSrc(it)
                     }
             }
+            launch {
+                viewModel.profileUiModel
+                    .map { it.gender }
+                    .distinctUntilChanged()
+                    .collect {
+                        when (it) {
+                            Gender.MAN -> binding.radiobuttonProfileMan.setCheckIfNew(true)
+                            Gender.WOMAN -> binding.radiobuttonProfileWoman.setCheckIfNew(true)
+                            Gender.NONE -> binding.radiogroupProfileGender.clearCheck()
+                        }
+                    }
+            }
         }
 
         observeEvent(viewModel.profileEvent) {
@@ -115,7 +137,7 @@ class ProfileEditActivity : AppCompatActivity() {
                     when (it.error) {
                         ProfileError.WRONG_ACCESS -> {
                             Lg.fw("Wrong access. signUpMetadata: $signUpMetaData, originProfile: $originalProfile")
-                            toast("잘못된 접근입니다.")
+                            toast(getString(R.string.profile_toast_wrong_access))
                             finish()
                         }
                     }
@@ -138,6 +160,13 @@ class ProfileEditActivity : AppCompatActivity() {
         }
         setDrawableEnd(resId)
         setTextIfNew(text)
+    }
+
+    private fun RadioButton.setCheckIfNew(check: Boolean) {
+        val oldValue = isChecked
+        if (oldValue != check) {
+            isChecked = check
+        }
     }
 
     companion object {

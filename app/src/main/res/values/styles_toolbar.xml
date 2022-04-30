@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="Toolbar" />
 
     <style name="Toolbar.DefaultStyle" parent="Widget.AppCompat.Toolbar">
         <item name="android:minHeight">54dp</item>
         <item name="maxButtonHeight">30dp</item>
+    </style>
+
+    <style name="Toolbar.DividerStyle" parent="Toolbar.DefaultStyle">
+        <item name="android:background">@drawable/toolbar_divider_background</item>
     </style>
 
     <style name="Toolbar.Title" parent="Widget.AppCompat.TextView">

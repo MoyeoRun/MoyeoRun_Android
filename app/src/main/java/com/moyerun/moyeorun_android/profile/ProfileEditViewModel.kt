@@ -59,6 +59,12 @@ class ProfileEditViewModel: ViewModel() {
         }
     }
 
+    fun onGenderChanged(gender: Gender) {
+        _profileUiModel.update {
+            it.copy(gender = gender)
+        }
+    }
+
     fun signUp() {
         // Todo: 회원가입 API 호출
         Lg.d("SignUp : ${profileUiModel.value}, $signUpMetaData")

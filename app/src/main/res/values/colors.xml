@@ -18,6 +18,8 @@
 
     <!-- Line colors -->
     <color name="line_dialog_divider">#EBECEF</color>
+    <color name="line_border_round">#D4D4D4</color>
+    <color name="line_toolbar_divider">#D4D4D4</color>
 
     <!-- button colors -->
     <color name="button_pressed_true">#0047D0</color>
