@@ -1,5 +1,9 @@
 package com.moyerun.moyeorun_android.login.ui
 
-enum class LoginEvent {
-    RegisteredUser, NewUser, Error
+import com.moyerun.moyeorun_android.profile.SignUpMetaData
+
+sealed class LoginEvent {
+    object RegisteredUser : LoginEvent()
+    data class NewUser(val signUpMetaData: SignUpMetaData) : LoginEvent()
+    object Error : LoginEvent()
 }

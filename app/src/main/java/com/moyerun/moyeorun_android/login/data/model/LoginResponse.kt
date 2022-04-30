@@ -1,4 +1,4 @@
-package com.moyerun.moyeorun_android.login.data
+package com.moyerun.moyeorun_android.login.data.model
 
 data class LoginResponse(
     val token: TokenPair,

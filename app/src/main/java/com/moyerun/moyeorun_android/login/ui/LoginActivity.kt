@@ -39,11 +39,10 @@ class LoginActivity : AppCompatActivity() {
                     val idToken = credential.googleIdToken
                     if (idToken != null) {
                         Lg.i("Success. token : $idToken")
-                        viewModel.signIn(idToken)
+                        viewModel.googleSignIn(idToken)
                     } else {
                         showUnknownErrorToast()
-                        //Todo: #31 을 rebase 하고 주석 풀기
-//                        Lg.fe("No ID token")
+                        Lg.fe("No ID token")
                     }
                 } catch (e: ApiException) {
                     when (e.statusCode) {
@@ -54,8 +53,7 @@ class LoginActivity : AppCompatActivity() {
                         }
                         else -> {
                             showUnknownErrorToast()
-                            //Todo: #31 을 rebase 하고 주석 풀기
-//                            Lg.fe("Couldn't get credential from result.", e)
+                            Lg.fe("Couldn't get credential from result.", e)
                         }
                     }
                 }
@@ -67,16 +65,16 @@ class LoginActivity : AppCompatActivity() {
         val binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        observeEvent(viewModel.loginEvent) {
-            when (it) {
-                LoginEvent.RegisteredUser -> {
-                    // Todo: 메인화면 진입
+        observeEvent(viewModel.loginEvent) { event ->
+            when (event) {
+                is LoginEvent.RegisteredUser -> {
+                    // Todo: 메인 화면으로 이동
                     Lg.d("Login!")
                 }
-                LoginEvent.NewUser -> {
-                    ProfileEditActivity.startActivity(this)
+                is LoginEvent.NewUser -> {
+                    ProfileEditActivity.startActivity(this, event.signUpMetaData)
                 }
-                LoginEvent.Error -> {
+                is LoginEvent.Error -> {
                     showUnknownErrorToast()
                 }
             }
@@ -91,15 +89,14 @@ class LoginActivity : AppCompatActivity() {
                         beginSignInResultLauncher.launch(intentSenderRequest)
                     } catch (e: IntentSender.SendIntentException) {
                         showUnknownErrorToast()
-//                        Lg.fe("Couldn't start One Tab UI", e)
+                        Lg.fe("Couldn't start One Tab UI", e)
                     }
                 }
                 .addOnFailureListener(this) {
                     // 기기에 등록된 계정이 없는 경우 호출
                     startDeviceGoogleSignInActivity()
-                    //Todo: #31 을 rebase 하고 주석 풀기
                     // 간혹 등록된 계정이 있는데도 해당 콜백을 타는 경우가 있어서 로깅
-//                    Lg.fe("No Google Accounts found", it)
+                    Lg.fe("No Google Accounts found", it)
                 }
         }
     }

@@ -8,6 +8,7 @@ import android.widget.EditText
 import androidx.activity.viewModels
 import androidx.core.widget.doAfterTextChanged
 import com.moyerun.moyeorun_android.R
+import com.moyerun.moyeorun_android.common.Lg
 import com.moyerun.moyeorun_android.common.extension.*
 import com.moyerun.moyeorun_android.databinding.ActivityProfileBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,8 +27,9 @@ class ProfileEditActivity : AppCompatActivity() {
         val binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val signUpMetaData: SignUpMetaData? = intent.getParcelableExtra(EXTRA_SIGN_UP_META_DATA)
         val originalProfile: ProfileUiModel? = intent.getParcelableExtra(EXTRA_PROFILE_UI_MODEL)
-        val isNewProfile = originalProfile == null
+        val isNewProfile = (originalProfile == null && signUpMetaData != null)
 
         if (isNewProfile) {
             binding.textviewProfileTitle.text = "기본 정보"
@@ -37,7 +39,7 @@ class ProfileEditActivity : AppCompatActivity() {
             binding.buttonProfileConfirm.text = "완료"
         }
 
-        viewModel.updateProfile(originalProfile)
+        viewModel.updateData(signUpMetaData, originalProfile)
 
         binding.edittextProfileName.doAfterTextChanged {
             viewModel.onNameChanged(it?.toString().orEmpty())
@@ -57,6 +59,12 @@ class ProfileEditActivity : AppCompatActivity() {
                         // Todo : 기본 이미지 선택 화면
                     }
                 )
+            }
+        }
+
+        binding.buttonProfileConfirm.setOnDebounceClickListener {
+            if (isNewProfile) {
+                viewModel.signUp()
             }
         }
 
@@ -86,6 +94,24 @@ class ProfileEditActivity : AppCompatActivity() {
                     }
             }
         }
+
+        observeEvent(viewModel.profileEvent) {
+            when (it) {
+                is ProfileEvent.SuccessSignUp -> {
+                    // Todo: 환영 액티비티로 이동
+                    Lg.d("observeEvent : Go to welcome activity!")
+                }
+                is ProfileEvent.Error -> {
+                    when (it.error) {
+                        ProfileError.WRONG_ACCESS -> {
+                            Lg.fw("Wrong access. signUpMetadata: $signUpMetaData, originProfile: $originalProfile")
+                            toast("잘못된 접근입니다.")
+                            finish()
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private fun isValidText(text: String): Boolean {
@@ -106,10 +132,19 @@ class ProfileEditActivity : AppCompatActivity() {
 
     companion object {
         private const val EXTRA_PROFILE_UI_MODEL = "profileUiModel"
+        private const val EXTRA_SIGN_UP_META_DATA = "signUpMetaData"
 
-        fun startActivity(context: Context, profileUiModel: ProfileUiModel? = null) {
+        // 프로필 수정 시 사용
+        fun startActivity(context: Context, profileUiModel: ProfileUiModel) {
             context.startActivity(Intent(context, ProfileEditActivity::class.java).apply {
                 putExtra(EXTRA_PROFILE_UI_MODEL, profileUiModel)
+            })
+        }
+
+        // 회원가입 시 사용
+        fun startActivity(context: Context, signUpMetaData: SignUpMetaData) {
+            context.startActivity(Intent(context, ProfileEditActivity::class.java).apply {
+                putExtra(EXTRA_SIGN_UP_META_DATA, signUpMetaData)
             })
         }
     }

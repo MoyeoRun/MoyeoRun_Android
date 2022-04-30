@@ -9,3 +9,12 @@ data class ProfileUiModel(
     val name: String = "",
     val nickname: String = ""
 ): Parcelable
+
+sealed class ProfileEvent {
+    object SuccessSignUp: ProfileEvent()
+    data class Error(val error: ProfileError): ProfileEvent()
+}
+
+enum class ProfileError {
+    WRONG_ACCESS
+}
