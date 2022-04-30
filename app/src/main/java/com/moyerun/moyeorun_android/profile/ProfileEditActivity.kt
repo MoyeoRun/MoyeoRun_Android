@@ -2,10 +2,11 @@ package com.moyerun.moyeorun_android.profile
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
 import com.moyerun.moyeorun_android.R
 import com.moyerun.moyeorun_android.common.Lg
@@ -41,6 +42,15 @@ class ProfileEditActivity : AppCompatActivity() {
 
         viewModel.updateData(signUpMetaData, originalProfile)
 
+        val galleryLauncher =
+            registerForActivityResult(ActivityResultContracts.GetContent()) { imageUri ->
+                if (imageUri != null) {
+                    viewModel.onImageUrlChanged(imageUri)
+                } else {
+                    Lg.fw("Cannot get Image Uri from gallery")
+                }
+            }
+
         binding.edittextProfileName.doAfterTextChanged {
             viewModel.onNameChanged(it?.toString().orEmpty())
         }
@@ -53,7 +63,7 @@ class ProfileEditActivity : AppCompatActivity() {
             showAllowingStateLoss("selectImage") {
                 ProfileImageSelectDialogFragment.getInstance(
                     onGalleryClick = {
-                        // Todo : 갤러리 선택 화면
+                        galleryLauncher.launch("image/*")
                     },
                     onDefaultImagesClick = {
                         // Todo : 기본 이미지 선택 화면
@@ -87,7 +97,7 @@ class ProfileEditActivity : AppCompatActivity() {
             }
             launch {
                 viewModel.profileUiModel
-                    .map { it.imageUrl }
+                    .map { it.imageUri }
                     .distinctUntilChanged()
                     .collect {
                         binding.badgeimageviewProfileImage.setBigCircleImgSrc(it)

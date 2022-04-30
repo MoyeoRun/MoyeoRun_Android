@@ -2,6 +2,7 @@ package com.moyerun.moyeorun_android.views
 
 import android.Manifest
 import android.content.Context
+import android.net.Uri
 import android.util.AttributeSet
 import android.util.Patterns
 import android.view.LayoutInflater
@@ -93,6 +94,12 @@ class BadgeRoundImageView @JvmOverloads constructor(
         } else
             Glide.with(context).load(imgUrl)
                 .placeholder(R.drawable.user_profile_image_default_112dp).into(binding.imgBigCircle)
+    }
+
+    fun setBigCircleImgSrc(imageUri: Uri) {
+        Glide.with(context).load(imageUri).centerCrop()
+            .placeholder(R.drawable.user_profile_image_default_112dp)
+            .into(binding.imgBigCircle)
     }
 
     fun setBigCircleImageBg(@ColorRes bgResId: Int) {

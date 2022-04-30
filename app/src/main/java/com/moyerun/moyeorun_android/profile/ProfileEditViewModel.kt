@@ -1,5 +1,6 @@
 package com.moyerun.moyeorun_android.profile
 
+import android.net.Uri
 import androidx.lifecycle.ViewModel
 import com.moyerun.moyeorun_android.common.EventLiveData
 import com.moyerun.moyeorun_android.common.Lg
@@ -52,9 +53,9 @@ class ProfileEditViewModel: ViewModel() {
         }
     }
 
-    fun onImageUrlChanged(imageUrl: String) {
+    fun onImageUrlChanged(imageUri: Uri) {
         _profileUiModel.update {
-            it.copy(imageUrl = imageUrl)
+            it.copy(imageUri = imageUri)
         }
     }
 
