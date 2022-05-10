@@ -1,11 +1,12 @@
 package com.moyerun.moyeorun_android.network.client
 
+import com.moyerun.moyeorun_android.BuildConfig
 import com.moyerun.moyeorun_android.network.calladapter.ApiResultCallAdapterFactory
 import com.moyerun.moyeorun_android.network.api.ApiService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-private const val BASE_URL = "https://d8181ccb-4d29-48c4-a63e-5f45735120f9.mock.pstmn.io/"
+private const val BASE_URL = BuildConfig.BASE_URL
 
 val retrofit: Retrofit = Retrofit.Builder()
     .baseUrl(BASE_URL)
