@@ -12,15 +12,9 @@ import java.io.IOException
 
 suspend fun <T : Any> DataStore<Preferences>.readValue(
     key: Preferences.Key<T>,
-    defaultValue: T,
-): T {
-    return data.catch { recoverOrThrow(it) }.map { it[key] }.firstOrNull() ?: defaultValue
-}
-
-suspend fun <T : Any> DataStore<Preferences>.readValue(
-    key: Preferences.Key<T>,
+    defaultValue: T?=null,
 ): T? {
-    return data.catch { recoverOrThrow(it) }.map { it[key] }.firstOrNull()
+    return data.catch { recoverOrThrow(it) }.map { it[key] }.firstOrNull() ?: defaultValue
 }
 
 suspend fun <T : Any> DataStore<Preferences>.storeValue(key: Preferences.Key<T>, value: T?) {
