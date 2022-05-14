@@ -95,7 +95,7 @@ class ProfileEditActivity : AppCompatActivity() {
                     .map { it.name }
                     .distinctUntilChanged()
                     .collect {
-                        binding.edittextProfileName.setTextAndCheckIcon(it)
+                        binding.edittextProfileName.setTextIfNew(it)
                     }
             }
             launch {
@@ -103,7 +103,7 @@ class ProfileEditActivity : AppCompatActivity() {
                     .map { it.nickname }
                     .distinctUntilChanged()
                     .collect {
-                        binding.edittextProfileNickname.setTextAndCheckIcon(it)
+                        binding.edittextProfileNickname.setTextIfNew(it)
                     }
             }
             launch {
@@ -124,6 +124,12 @@ class ProfileEditActivity : AppCompatActivity() {
                             Gender.WOMAN -> binding.radiobuttonProfileWoman.setCheckIfNew(true)
                             Gender.NONE -> binding.radiogroupProfileGender.clearCheck()
                         }
+                    }
+            }
+            launch {
+                viewModel.isButtonEnabled
+                    .collect { buttonEnabled ->
+                        binding.buttonProfileConfirm.isEnabled = buttonEnabled
                     }
             }
         }
@@ -147,29 +153,6 @@ class ProfileEditActivity : AppCompatActivity() {
                     toast(getString(R.string.profile_toast_unknown_error))
                 }
             }
-        }
-    }
-
-    private fun isValidText(text: String): Boolean {
-        // Todo: 유효성 검사 조건 추가 (ex. 정규 표현식, 글자 제한)
-        return text.isNotEmpty()
-    }
-
-    private fun EditText.setTextAndCheckIcon(text: String) {
-        val isValid = isValidText(text)
-        val resId = if (isValid) {
-            R.drawable.ic_check
-        } else {
-            null
-        }
-        setDrawableEnd(resId)
-        setTextIfNew(text)
-    }
-
-    private fun RadioButton.setCheckIfNew(check: Boolean) {
-        val oldValue = isChecked
-        if (oldValue != check) {
-            isChecked = check
         }
     }
 

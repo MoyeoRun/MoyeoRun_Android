@@ -2,6 +2,7 @@ package com.moyerun.moyeorun_android.common.extension
 
 import android.text.TextUtils
 import android.view.View
+import android.widget.RadioButton
 import android.widget.TextView
 import androidx.annotation.DrawableRes
 
@@ -27,6 +28,9 @@ fun TextView.setTextIfNew(text: CharSequence?) {
     }
 }
 
-fun TextView.setDrawableEnd(@DrawableRes resId: Int?) {
-    setCompoundDrawablesWithIntrinsicBounds(0, 0, resId ?: 0, 0)
+fun RadioButton.setCheckIfNew(check: Boolean) {
+    val oldValue = isChecked
+    if (oldValue != check) {
+        isChecked = check
+    }
 }

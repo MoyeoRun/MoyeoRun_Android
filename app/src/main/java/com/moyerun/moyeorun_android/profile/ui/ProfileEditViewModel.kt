@@ -32,6 +32,10 @@ class ProfileEditViewModel @Inject constructor(
     val profileErrorEvent: EventLiveData<ProfileError>
         get() = _profileErrorEvent
 
+    private val _isButtonEnabled = MutableStateFlow(false)
+    val isButtonEnabled: StateFlow<Boolean>
+        get() = _isButtonEnabled
+
     private var signUpMetaData: SignUpMetaData? = null
     private var oldProfileUiModel: ProfileUiModel? = null
 
@@ -55,16 +59,18 @@ class ProfileEditViewModel @Inject constructor(
         }
     }
 
-    fun onNameChanged(name: String) {
+    fun onNameChanged(name: String) = updateWithValidate {
         _profileUiModel.update {
             it.copy(name = name)
         }
+        _profileUiModel.value
     }
 
-    fun onNicknameChanged(nickname: String) {
+    fun onNicknameChanged(nickname: String) = updateWithValidate {
         _profileUiModel.update {
             it.copy(nickname = nickname)
         }
+        _profileUiModel.value
     }
 
     fun onImageUrlChanged(imageUri: Uri) {
@@ -73,10 +79,11 @@ class ProfileEditViewModel @Inject constructor(
         }
     }
 
-    fun onGenderChanged(gender: Gender) {
+    fun onGenderChanged(gender: Gender) = updateWithValidate {
         _profileUiModel.update {
             it.copy(gender = gender)
         }
+        _profileUiModel.value
     }
 
     fun signUp() {
@@ -91,5 +98,26 @@ class ProfileEditViewModel @Inject constructor(
             //Todo: ApiResult 사용
             _profileEvent.event = ProfileEvent.SUCCESS_SIGN_UP
         }
+    }
+
+    private fun updateWithValidate(updateAction: () -> ProfileUiModel) {
+        val updatedProfileUiModel = updateAction.invoke()
+        _isButtonEnabled.update {
+            updatedProfileUiModel.validate()
+        }
+    }
+
+    private fun ProfileUiModel.validate(): Boolean {
+        return name.validateName()
+                && nickname.validateNickname()
+                && gender != Gender.NONE
+    }
+
+    private fun String.validateName(): Boolean {
+        return isNotEmpty()
+    }
+
+    private fun String.validateNickname(): Boolean {
+        return isNotEmpty()
     }
 }
