@@ -1,15 +1,24 @@
-package com.moyerun.moyeorun_android.profile
+package com.moyerun.moyeorun_android.profile.ui
 
 import android.net.Uri
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.moyerun.moyeorun_android.common.EventLiveData
 import com.moyerun.moyeorun_android.common.Lg
 import com.moyerun.moyeorun_android.common.MutableEventLiveData
+import com.moyerun.moyeorun_android.login.data.AuthRepository
+import com.moyerun.moyeorun_android.login.SignUpMetaData
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ProfileEditViewModel: ViewModel() {
+@HiltViewModel
+class ProfileEditViewModel @Inject constructor(
+    private val authRepository: AuthRepository
+) : ViewModel() {
 
     private val _profileUiModel = MutableStateFlow(ProfileUiModel())
     val profileUiModel: StateFlow<ProfileUiModel>
@@ -18,6 +27,10 @@ class ProfileEditViewModel: ViewModel() {
     private val _profileEvent = MutableEventLiveData<ProfileEvent>()
     val profileEvent: EventLiveData<ProfileEvent>
         get() = _profileEvent
+
+    private val _profileErrorEvent = MutableEventLiveData<ProfileError>()
+    val profileErrorEvent: EventLiveData<ProfileError>
+        get() = _profileErrorEvent
 
     private var signUpMetaData: SignUpMetaData? = null
     private var oldProfileUiModel: ProfileUiModel? = null
@@ -36,7 +49,8 @@ class ProfileEditViewModel: ViewModel() {
                 isNewProfile = true
             }
             else -> {
-                _profileEvent.event = ProfileEvent.Error(ProfileError.WRONG_ACCESS)
+                Lg.fw("Wrong access. signUpMetadata: $signUpMetaData, originProfile: $profileUiModel")
+                _profileErrorEvent.event = ProfileError.WRONG_ACCESS
             }
         }
     }
@@ -66,8 +80,16 @@ class ProfileEditViewModel: ViewModel() {
     }
 
     fun signUp() {
-        // Todo: 회원가입 API 호출
-        Lg.d("SignUp : ${profileUiModel.value}, $signUpMetaData")
-        _profileEvent.event = ProfileEvent.SuccessSignUp
+        val metaData = signUpMetaData
+        if (metaData == null) {
+            Lg.fw("SignUp Failure. meta data is null")
+            _profileErrorEvent.event = ProfileError.UNKNOWN
+            return
+        }
+        viewModelScope.launch {
+            authRepository.signUp(profileUiModel.value.toSignUpRequest(metaData))
+            //Todo: ApiResult 사용
+            _profileEvent.event = ProfileEvent.SUCCESS_SIGN_UP
+        }
     }
 }

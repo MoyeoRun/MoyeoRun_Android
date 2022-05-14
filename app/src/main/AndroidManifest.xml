@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MoyeoRunandroid">
         <activity
-            android:name=".profile.ProfileEditActivity"
+            android:name=".profile.ui.ProfileEditActivity"
             android:exported="false"/>
         <activity
             android:name=".login.ui.LoginActivity"

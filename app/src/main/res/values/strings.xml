@@ -18,5 +18,6 @@
     <string name="profile_button_image_select_gallery">갤러리에서 선택</string>
     <string name="profile_button_image_select_default">기본 이미지에서 선택</string>
     <string name="profile_toast_wrong_access">잘못된 접근입니다.</string>
+    <string name="profile_toast_unknown_error">회원가입에 실패했습니다.</string>
 
 </resources>

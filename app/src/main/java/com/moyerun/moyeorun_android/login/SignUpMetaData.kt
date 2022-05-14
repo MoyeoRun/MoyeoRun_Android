@@ -1,4 +1,4 @@
-package com.moyerun.moyeorun_android.profile
+package com.moyerun.moyeorun_android.login
 
 import android.os.Parcelable
 import com.moyerun.moyeorun_android.login.ProviderType

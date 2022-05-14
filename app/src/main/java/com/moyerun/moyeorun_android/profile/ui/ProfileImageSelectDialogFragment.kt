@@ -1,4 +1,4 @@
-package com.moyerun.moyeorun_android.profile
+package com.moyerun.moyeorun_android.profile.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater

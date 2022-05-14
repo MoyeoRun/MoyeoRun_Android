@@ -1,4 +1,4 @@
-package com.moyerun.moyeorun_android.profile
+package com.moyerun.moyeorun_android.profile.ui
 
 import android.content.Context
 import android.content.Intent
@@ -13,6 +13,7 @@ import com.moyerun.moyeorun_android.R
 import com.moyerun.moyeorun_android.common.Lg
 import com.moyerun.moyeorun_android.common.extension.*
 import com.moyerun.moyeorun_android.databinding.ActivityProfileBinding
+import com.moyerun.moyeorun_android.login.SignUpMetaData
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.distinctUntilChanged
@@ -129,18 +130,21 @@ class ProfileEditActivity : AppCompatActivity() {
 
         observeEvent(viewModel.profileEvent) {
             when (it) {
-                is ProfileEvent.SuccessSignUp -> {
+                ProfileEvent.SUCCESS_SIGN_UP -> {
                     // Todo: 환영 액티비티로 이동
                     Lg.d("observeEvent : Go to welcome activity!")
                 }
-                is ProfileEvent.Error -> {
-                    when (it.error) {
-                        ProfileError.WRONG_ACCESS -> {
-                            Lg.fw("Wrong access. signUpMetadata: $signUpMetaData, originProfile: $originalProfile")
-                            toast(getString(R.string.profile_toast_wrong_access))
-                            finish()
-                        }
-                    }
+            }
+        }
+
+        observeEvent(viewModel.profileErrorEvent) {
+            when (it) {
+                ProfileError.WRONG_ACCESS -> {
+                    toast(getString(R.string.profile_toast_wrong_access))
+                    finish()
+                }
+                ProfileError.UNKNOWN -> {
+                    toast(getString(R.string.profile_toast_unknown_error))
                 }
             }
         }

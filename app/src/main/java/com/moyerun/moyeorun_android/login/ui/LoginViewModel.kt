@@ -5,8 +5,8 @@ import androidx.lifecycle.viewModelScope
 import com.moyerun.moyeorun_android.common.EventLiveData
 import com.moyerun.moyeorun_android.common.MutableEventLiveData
 import com.moyerun.moyeorun_android.login.ProviderType
-import com.moyerun.moyeorun_android.profile.SignUpMetaData
-import com.moyerun.moyeorun_android.login.data.LoginRepository
+import com.moyerun.moyeorun_android.login.SignUpMetaData
+import com.moyerun.moyeorun_android.login.data.AuthRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-    private val loginRepository: LoginRepository
+    private val authRepository: AuthRepository
 ) : ViewModel() {
 
     private val _isLoading = MutableStateFlow(false)
@@ -27,13 +27,13 @@ class LoginViewModel @Inject constructor(
         get() = _loginEvent
 
     fun googleSignIn(idToken: String) {
-        signInInternal(idToken, ProviderType.Google)
+        signInInternal(idToken, ProviderType.GOOGLE)
     }
 
     private fun signInInternal(idToken: String, providerType: ProviderType) {
         viewModelScope.launch {
             _isLoading.value = true
-            val result = loginRepository.signIn(idToken, providerType)
+            val result = authRepository.signIn(idToken, providerType)
             _loginEvent.event = if (result.isNewUser) {
                 LoginEvent.NewUser(SignUpMetaData(idToken, providerType))
             } else {

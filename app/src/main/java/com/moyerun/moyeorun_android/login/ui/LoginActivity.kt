@@ -20,7 +20,7 @@ import com.moyerun.moyeorun_android.common.extension.observeEvent
 import com.moyerun.moyeorun_android.common.extension.showNetworkErrorToast
 import com.moyerun.moyeorun_android.common.extension.toast
 import com.moyerun.moyeorun_android.databinding.ActivityLoginBinding
-import com.moyerun.moyeorun_android.profile.ProfileEditActivity
+import com.moyerun.moyeorun_android.profile.ui.ProfileEditActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

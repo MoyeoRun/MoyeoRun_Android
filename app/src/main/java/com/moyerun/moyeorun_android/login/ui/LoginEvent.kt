@@ -1,6 +1,6 @@
 package com.moyerun.moyeorun_android.login.ui
 
-import com.moyerun.moyeorun_android.profile.SignUpMetaData
+import com.moyerun.moyeorun_android.login.SignUpMetaData
 
 sealed class LoginEvent {
     object RegisteredUser : LoginEvent()
