@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Profile" />
+
+    <style name="Profile.Input" parent="BorderEditText">
+        <item name="android:textSize">18dp</item>
+        <item name="android:paddingHorizontal">21dp</item>
+        <item name="android:paddingVertical">15dp</item>
+    </style>
+
+    <style name="Profile.InputLabel" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+</resources>
