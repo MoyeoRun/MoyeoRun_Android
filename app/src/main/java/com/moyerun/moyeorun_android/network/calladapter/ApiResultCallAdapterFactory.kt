@@ -14,31 +14,37 @@ class ApiResultCallAdapterFactory : CallAdapter.Factory() {
         retrofit: Retrofit
     ): CallAdapter<*, *>? {
 
-        // suspend functions wrap the response type in `Call`
+        // suspend 함수의 리턴 타입은 `Call`로 Wrapping 되어 있어야 한다.
         if (getRawType(returnType) != Call::class.java) {
             return null
         }
 
-        // check first that the return type is `ParameterizedType`
+        // suspend 함수의 리턴 타입은 제네릭 타입이어야 한다.
         if (returnType !is ParameterizedType) {
             return null
         }
 
-        // get the response type inside the `Call` type
-        val responseType = getParameterUpperBound(0, returnType)
+        // `Call`로 Wrapping 되어 있는 ApiResult 타입을 추출한다.
+        val apiResultType = getParameterUpperBound(0, returnType)
 
-        // if the response type is not ApiResponse then we can't handle this type, so we return null
-        if (getRawType(responseType) != ApiResult::class.java) {
+        // ApiResult 타입은 `ApiResult`로 Wrapping 되어 있어야 한다.
+        if (getRawType(apiResultType) != ApiResult::class.java) {
             return null
         }
 
-        // the response type is ApiResponse and should be parameterized
+        // ApiResult 타입은 제네릭 타입이어야 한다.
+        if (apiResultType !is ParameterizedType) {
+            return null
+        }
+
+        // `ApiResult`로 Wrapping 되어 있는 response 타입을 추출한다.
+        val responseType = getParameterUpperBound(0, apiResultType)
+
+        // response 타입은 제네릭 타입이어야 한다.
         if (responseType !is ParameterizedType) {
             return null
         }
 
-        val successResponseType = getParameterUpperBound(0, responseType)
-
-        return ApiResultCallAdapter<Any>(successResponseType)
+        return ApiResultCallAdapter<Any>(responseType)
     }
 }

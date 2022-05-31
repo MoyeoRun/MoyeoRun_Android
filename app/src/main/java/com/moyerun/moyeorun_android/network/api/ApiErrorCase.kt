@@ -12,10 +12,10 @@ enum class ApiErrorCase(val case: String) {
             return values().find { it.case == case } ?: UNKNOWN
         }
 
-        fun getException(url: String, error: Error, cause: Throwable? = null): Throwable {
-            return when(findError(error.case)) {
+        fun getException(url: String, apiFailure: ApiFailure, cause: Throwable? = null): Throwable {
+            return when(findError(apiFailure.case)) {
                 NOT_LOGIN -> { TODO() }
-                else -> ApiException(url, error)
+                else -> ApiException(url, apiFailure)
             }
         }
     }

@@ -1,11 +1,11 @@
 package com.moyerun.moyeorun_android.common.exceptions
 
-import com.moyerun.moyeorun_android.network.api.Error
+import com.moyerun.moyeorun_android.network.api.ApiFailure
 
-class ApiException(val url: String, val error: Error) : RuntimeException() {
+class ApiException(val url: String, val apiFailure: ApiFailure) : RuntimeException() {
     val case: String
-        get() = error.case
+        get() = apiFailure.case
 
     override val message: String?
-        get() = error.message
+        get() = apiFailure.message
 }
