@@ -1,13 +1,22 @@
 package com.moyerun.moyeorun_android.home
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
 import android.view.View
-import com.moyerun.moyeorun_android.R
+import android.view.ViewGroup
+import com.moyerun.moyeorun_android.databinding.FragmentHomeBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-class HomeFragment : Fragment(R.layout.fragment_home) {
+@AndroidEntryPoint
+class HomeFragment : Fragment() {
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        val binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
     }
 }
