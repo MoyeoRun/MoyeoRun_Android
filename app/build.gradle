@@ -5,6 +5,7 @@ plugins {
     id 'com.google.gms.google-services'
     id 'com.google.firebase.crashlytics'
     id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -74,7 +75,6 @@ dependencies {
     def glide_version = '4.13.1'
     def datastore_preferences_version = '1.0.0'
     def retrofit_version = '2.9.0'
-    def navigation_version = '2.4.2'
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
