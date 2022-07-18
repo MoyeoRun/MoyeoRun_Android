@@ -2,17 +2,59 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/create_room_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".home.CreateRoomActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <!-- TODO : (chohee) 로그인 리베이스 후, 툴바 스타일 추가하기 -->
+    <!-- TODO : (chohee) 로그인 리베이스 후, 뒤로가기 드로어블로 바꾸기 -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="방 생성 화면"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:navigationIcon="@drawable/ic_add" />
+
+    <!-- TODO : (chohee) height 임시로 해놓음. 피그마 이미지 다운이 안 됨. -->
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/room_background"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="#B2F1AD" />
+
+    <LinearLayout
+        android:id="@+id/room_name_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="45dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/room_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="방 이름"
+            android:textSize="16dp"
+            android:textStyle="bold"/>
+        <!-- TODO : (chohee) 스타일 프로필 EditText랑 똑같음. 로그인 쪽 꺼 받아서 쓰기 -->
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="방 이름을 입력해주세요.\n(ex. 자유롭게 5km 뛰어요)"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="0 / 20자"
+            android:textSize="13dp"
+            android:textColor="#636770" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
