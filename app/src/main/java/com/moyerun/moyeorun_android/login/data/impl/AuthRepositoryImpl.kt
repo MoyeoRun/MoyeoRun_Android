@@ -17,12 +17,12 @@ class AuthRepositoryImpl @Inject constructor(
     @IODispatcher private val coroutineDispatcher: CoroutineDispatcher
 ) : AuthRepository {
 
-    override suspend fun signIn(idToken: String, providerType: ProviderType): SignInResponse {
+    override suspend fun signIn(
+        idToken: String,
+        providerType: ProviderType
+    ): ApiResult<Success<SignInResponse>> {
         return withContext(coroutineDispatcher) {
-            val request = SignInRequest(idToken, providerType.name.uppercase())
-            // Todo: 모여런 서버 signIn
-            Lg.d("Try sign in ! : $request")
-            SignInResponse(TokenPair("", ""),"1234", true)
+            network.signIn(idToken = idToken, providerType = providerType)
         }
     }
 

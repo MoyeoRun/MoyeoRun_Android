@@ -7,6 +7,8 @@ import com.moyerun.moyeorun_android.common.MutableEventLiveData
 import com.moyerun.moyeorun_android.login.ProviderType
 import com.moyerun.moyeorun_android.login.SignUpMetaData
 import com.moyerun.moyeorun_android.login.data.AuthRepository
+import com.moyerun.moyeorun_android.network.calladapter.onFailure
+import com.moyerun.moyeorun_android.network.calladapter.onSuccess
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -33,12 +35,16 @@ class LoginViewModel @Inject constructor(
     private fun signInInternal(idToken: String, providerType: ProviderType) {
         viewModelScope.launch {
             _isLoading.value = true
-            val result = authRepository.signIn(idToken, providerType)
-            _loginEvent.event = if (result.isNewUser) {
-                LoginEvent.NewUser(SignUpMetaData(idToken, providerType))
-            } else {
-                LoginEvent.RegisteredUser
-            }
+            authRepository.signIn(idToken, providerType)
+                .onSuccess {
+                    _loginEvent.event = if (it.data.isNewUser) {
+                        LoginEvent.NewUser(SignUpMetaData(idToken, providerType))
+                    } else {
+                        LoginEvent.RegisteredUser
+                    }
+                }.onFailure {
+                    _loginEvent.event = LoginEvent.Error
+                }
             _isLoading.value = false
         }
     }

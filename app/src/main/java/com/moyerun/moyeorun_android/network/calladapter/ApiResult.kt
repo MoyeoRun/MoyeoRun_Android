@@ -1,5 +1,8 @@
 package com.moyerun.moyeorun_android.network.calladapter
 
+import kotlin.contracts.InvocationKind
+import kotlin.contracts.contract
+
 /**
  * Success : API 호출 성공 시, body를 Wrapping 합니다.
  * Failure : API 호출 실패 시, throwable을 Wrpping 합니다.
@@ -21,4 +24,11 @@ inline fun <T> ApiResult<T>.onFailure(action: (throwable: Throwable) -> Unit): A
         action.invoke(throwable)
     }
     return this
+}
+
+inline fun <R, T> ApiResult<T>.map(transform: (value: T) -> R): ApiResult<R> {
+    return when (this) {
+        is ApiResult.Success -> ApiResult.Success(transform(body))
+        is ApiResult.Failure -> ApiResult.Failure(throwable)
+    }
 }

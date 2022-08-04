@@ -7,6 +7,10 @@ import com.moyerun.moyeorun_android.network.api.Success
 import com.moyerun.moyeorun_android.network.calladapter.ApiResult
 
 interface AuthRepository {
+    suspend fun signIn(
+        idToken: String,
+        providerType: ProviderType
+    ): ApiResult<Success<SignInResponse>>
+
     suspend fun signUp(signUpRequest: SignUpRequest): ApiResult<Success<SignInResponse>>
-    suspend fun signIn(idToken: String, providerType: ProviderType): SignInResponse
 }
