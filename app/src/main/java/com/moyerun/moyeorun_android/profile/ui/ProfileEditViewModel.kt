@@ -95,7 +95,7 @@ class ProfileEditViewModel @Inject constructor(
             authRepository.signUp(profileUiModel.value.toSignUpRequest(metaData))
                 .onSuccess {
                     _profileEvent.event = ProfileEvent.SUCCESS_SIGN_UP
-                    Lg.d(it.data.toString())
+                    Lg.d(it.toString())
                 }
                 .onFailure { throwable ->
                     when (throwable) {

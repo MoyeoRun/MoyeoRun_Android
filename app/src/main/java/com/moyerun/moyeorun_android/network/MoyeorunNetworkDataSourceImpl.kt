@@ -14,7 +14,7 @@ class MoyeorunNetworkDataSourceImpl(
     override suspend fun signIn(
         idToken: String,
         providerType: ProviderType
-    ): ApiResult<Success<SignInResponse>> {
+    ): ApiResult<SignInResponse> {
         return moyeorunService.signIn(
             SignInRequest(
                 idToken = idToken,
@@ -23,7 +23,7 @@ class MoyeorunNetworkDataSourceImpl(
         )
     }
 
-    override suspend fun signUp(signUpRequest: SignUpRequest): ApiResult<Success<SignInResponse>> {
+    override suspend fun signUp(signUpRequest: SignUpRequest): ApiResult<SignInResponse> {
         return moyeorunService.signUp(signUpRequest)
     }
 }

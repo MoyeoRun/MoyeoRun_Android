@@ -10,7 +10,7 @@ interface AuthRepository {
     suspend fun signIn(
         idToken: String,
         providerType: ProviderType
-    ): ApiResult<Success<SignInResponse>>
+    ): ApiResult<SignInResponse>
 
-    suspend fun signUp(signUpRequest: SignUpRequest): ApiResult<Success<SignInResponse>>
+    suspend fun signUp(signUpRequest: SignUpRequest): ApiResult<SignInResponse>
 }

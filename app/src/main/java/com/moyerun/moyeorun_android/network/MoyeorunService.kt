@@ -11,8 +11,8 @@ import retrofit2.http.POST
 interface MoyeorunService {
 
     @POST("/api/auth/sign-in")
-    suspend fun signIn(@Body signInRequest: SignInRequest): ApiResult<Success<SignInResponse>>
+    suspend fun signIn(@Body signInRequest: SignInRequest): ApiResult<SignInResponse>
 
     @POST("/api/auth/sign-up")
-    suspend fun signUp(@Body signUpRequest: SignUpRequest): ApiResult<Success<SignInResponse>>
+    suspend fun signUp(@Body signUpRequest: SignUpRequest): ApiResult<SignInResponse>
 }

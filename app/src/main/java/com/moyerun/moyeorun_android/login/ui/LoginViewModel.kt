@@ -37,7 +37,7 @@ class LoginViewModel @Inject constructor(
             _isLoading.value = true
             authRepository.signIn(idToken, providerType)
                 .onSuccess {
-                    _loginEvent.event = if (it.data.isNewUser) {
+                    _loginEvent.event = if (it.isNewUser) {
                         LoginEvent.NewUser(SignUpMetaData(idToken, providerType))
                     } else {
                         LoginEvent.RegisteredUser
