@@ -1,10 +1,8 @@
 package com.moyerun.moyeorun_android.common.extension
 
-import android.text.TextUtils
 import android.view.View
 import android.widget.RadioButton
 import android.widget.TextView
-import androidx.annotation.DrawableRes
 
 fun View.setOnDebounceClickListener(interval: Long = 1000L, action: (View?) -> Unit) {
     val debounceClickListener = object : View.OnClickListener {
@@ -23,7 +21,7 @@ fun View.setOnDebounceClickListener(interval: Long = 1000L, action: (View?) -> U
 }
 
 fun TextView.setTextIfNew(text: CharSequence?) {
-    if (TextUtils.equals(this.text, text).not()) {
+    if (this.text != text) {
         setText(text)
     }
 }
