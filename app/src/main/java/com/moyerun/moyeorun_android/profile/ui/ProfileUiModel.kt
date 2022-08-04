@@ -9,7 +9,6 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class ProfileUiModel(
     val imageUri: Uri = Uri.EMPTY,
-    val name: String = "",
     val nickname: String = "",
     val gender: Gender = Gender.NONE
 ) : Parcelable
@@ -18,7 +17,6 @@ fun ProfileUiModel.toSignUpRequest(signUpMetaData: SignUpMetaData): SignUpReques
     return SignUpRequest(
         idToken = signUpMetaData.idToken,
         providerType = signUpMetaData.providerType.name,
-        name = name,
         nickName = nickname,
         gender = gender.name,
         image = "TEST" //TODO: 이미지 Uri 넣기

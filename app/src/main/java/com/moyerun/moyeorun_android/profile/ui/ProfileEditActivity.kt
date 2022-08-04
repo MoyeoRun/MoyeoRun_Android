@@ -22,6 +22,15 @@ class ProfileEditActivity : AppCompatActivity() {
 
     private val viewModel: ProfileEditViewModel by viewModels()
 
+    private val galleryLauncher =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { imageUri ->
+            if (imageUri != null) {
+                viewModel.onImageUrlChanged(imageUri)
+            } else {
+                Lg.fw("Cannot get Image Uri from gallery")
+            }
+        }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityProfileBinding.inflate(layoutInflater)
@@ -40,19 +49,6 @@ class ProfileEditActivity : AppCompatActivity() {
         }
 
         viewModel.updateData(signUpMetaData, originalProfile)
-
-        val galleryLauncher =
-            registerForActivityResult(ActivityResultContracts.GetContent()) { imageUri ->
-                if (imageUri != null) {
-                    viewModel.onImageUrlChanged(imageUri)
-                } else {
-                    Lg.fw("Cannot get Image Uri from gallery")
-                }
-            }
-
-        binding.edittextProfileName.doAfterTextChanged {
-            viewModel.onNameChanged(it?.toString().orEmpty())
-        }
 
         binding.edittextProfileNickname.doAfterTextChanged {
             viewModel.onNicknameChanged(it?.toString().orEmpty())
@@ -87,14 +83,6 @@ class ProfileEditActivity : AppCompatActivity() {
         }
 
         repeatOnStart {
-            launch {
-                viewModel.profileUiModel
-                    .map { it.name }
-                    .distinctUntilChanged()
-                    .collect {
-                        binding.edittextProfileName.setTextIfNew(it)
-                    }
-            }
             launch {
                 viewModel.profileUiModel
                     .map { it.nickname }

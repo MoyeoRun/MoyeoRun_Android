@@ -64,13 +64,6 @@ class ProfileEditViewModel @Inject constructor(
         }
     }
 
-    fun onNameChanged(name: String) = updateWithValidate {
-        _profileUiModel.update {
-            it.copy(name = name)
-        }
-        _profileUiModel.value
-    }
-
     fun onNicknameChanged(nickname: String) = updateWithValidate {
         _profileUiModel.update {
             it.copy(nickname = nickname)
@@ -122,13 +115,8 @@ class ProfileEditViewModel @Inject constructor(
     }
 
     private fun ProfileUiModel.validate(): Boolean {
-        return name.validateName()
-                && nickname.validateNickname()
+        return nickname.validateNickname()
                 && gender != Gender.NONE
-    }
-
-    private fun String.validateName(): Boolean {
-        return isNotEmpty()
     }
 
     private fun String.validateNickname(): Boolean {

@@ -49,22 +49,6 @@
             style="@style/Profile.InputLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/profile_name" />
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/edittext_profile_name"
-            style="@style/Profile.Input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:hint="@string/profile_name"
-            android:inputType="text" />
-
-        <TextView
-            style="@style/Profile.InputLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:text="@string/profile_nickname" />
 
         <androidx.appcompat.widget.AppCompatEditText
