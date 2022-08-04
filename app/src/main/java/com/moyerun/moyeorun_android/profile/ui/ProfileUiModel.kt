@@ -16,10 +16,12 @@ data class ProfileUiModel(
 
 fun ProfileUiModel.toSignUpRequest(signUpMetaData: SignUpMetaData): SignUpRequest {
     return SignUpRequest(
-        signUpMetaData.idToken,
-        signUpMetaData.providerType.name,
-        nickname,
-        gender.name
+        idToken = signUpMetaData.idToken,
+        providerType = signUpMetaData.providerType.name,
+        name = name,
+        nickName = nickname,
+        gender = gender.name,
+        image = "TEST" //TODO: 이미지 Uri 넣기
     )
 }
 
@@ -28,9 +30,13 @@ enum class ProfileEvent {
 }
 
 enum class ProfileError {
-    WRONG_ACCESS, UNKNOWN
+    WRONG_ACCESS,
+    DUPLICATE_NICKNAME,
+    UNKNOWN_AUTH,
+    NETWORK,
+    UNKNOWN
 }
 
 enum class Gender {
-    MAN, WOMAN, NONE
+    MALE, FEMALE, NONE
 }

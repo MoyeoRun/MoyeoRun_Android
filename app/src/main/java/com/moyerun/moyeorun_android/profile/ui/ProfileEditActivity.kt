@@ -3,8 +3,6 @@ package com.moyerun.moyeorun_android.profile.ui
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.EditText
-import android.widget.RadioButton
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -15,7 +13,6 @@ import com.moyerun.moyeorun_android.common.extension.*
 import com.moyerun.moyeorun_android.databinding.ActivityProfileBinding
 import com.moyerun.moyeorun_android.login.SignUpMetaData
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
@@ -76,8 +73,8 @@ class ProfileEditActivity : AppCompatActivity() {
 
         binding.radiogroupProfileGender.setOnCheckedChangeListener { _, checkedId ->
             val gender = when (checkedId) {
-                R.id.radiobutton_profile_man -> Gender.MAN
-                R.id.radiobutton_profile_woman -> Gender.WOMAN
+                R.id.radiobutton_profile_man -> Gender.MALE
+                R.id.radiobutton_profile_woman -> Gender.FEMALE
                 else -> Gender.NONE
             }
             viewModel.onGenderChanged(gender)
@@ -120,8 +117,8 @@ class ProfileEditActivity : AppCompatActivity() {
                     .distinctUntilChanged()
                     .collect {
                         when (it) {
-                            Gender.MAN -> binding.radiobuttonProfileMan.setCheckIfNew(true)
-                            Gender.WOMAN -> binding.radiobuttonProfileWoman.setCheckIfNew(true)
+                            Gender.MALE -> binding.radiobuttonProfileMan.setCheckIfNew(true)
+                            Gender.FEMALE -> binding.radiobuttonProfileWoman.setCheckIfNew(true)
                             Gender.NONE -> binding.radiogroupProfileGender.clearCheck()
                         }
                     }
@@ -145,15 +142,25 @@ class ProfileEditActivity : AppCompatActivity() {
 
         observeEvent(viewModel.profileErrorEvent) {
             when (it) {
+                ProfileError.DUPLICATE_NICKNAME -> {
+                    binding.alertDuplicate()
+                }
                 ProfileError.WRONG_ACCESS -> {
                     toast(getString(R.string.profile_toast_wrong_access))
                     finish()
                 }
-                ProfileError.UNKNOWN -> {
+                ProfileError.UNKNOWN, ProfileError.UNKNOWN_AUTH -> {
                     toast(getString(R.string.profile_toast_unknown_error))
+                }
+                ProfileError.NETWORK -> {
+                    showNetworkErrorToast()
                 }
             }
         }
+    }
+
+    private fun ActivityProfileBinding.alertDuplicate() {
+        edittextProfileNickname.setTextAppearance(R.style.Profile_Input_Wrong)
     }
 
     companion object {

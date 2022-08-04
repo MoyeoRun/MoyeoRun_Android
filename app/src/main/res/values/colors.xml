@@ -28,4 +28,6 @@
 
     <!-- edittext colors -->
     <color name="edittext_default_stroke">#D4D4D4</color>
+    <color name="edittext_warning_stroke">#FF3A3A</color>
+    <color name="edittext_warning_background">#FFF8F8</color>
 </resources>

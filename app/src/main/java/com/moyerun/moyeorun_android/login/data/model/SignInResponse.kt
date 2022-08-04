@@ -1,12 +1,12 @@
 package com.moyerun.moyeorun_android.login.data.model
 
-data class LoginResponse(
+data class SignInResponse(
     val token: TokenPair,
+    val userId: String,
     val isNewUser: Boolean,
-    val userId: String
 )
 
 data class TokenPair(
-    val accessToken: Token,
-    val refreshToken: Token
+    val accessToken: String,
+    val refreshToken: String,
 )
