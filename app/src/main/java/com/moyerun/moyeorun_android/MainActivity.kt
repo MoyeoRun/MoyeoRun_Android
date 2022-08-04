@@ -1,15 +1,13 @@
 package com.moyerun.moyeorun_android
 
-import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.moyerun.moyeorun_android.databinding.ActivityMainBinding
-import androidx.appcompat.app.AppCompatActivity
-import com.moyerun.moyeorun_android.login.ui.LoginActivity
 
 class MainActivity : AppCompatActivity() {
 
