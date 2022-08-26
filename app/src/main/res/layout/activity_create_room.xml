@@ -1,60 +1,216 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".home.CreateRoomActivity">
 
-    <!-- TODO : (chohee) 로그인 리베이스 후, 툴바 스타일 추가하기 -->
-    <!-- TODO : (chohee) 로그인 리베이스 후, 뒤로가기 드로어블로 바꾸기 -->
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:navigationIcon="@drawable/ic_add" />
-
-    <!-- TODO : (chohee) height 임시로 해놓음. 피그마 이미지 다운이 안 됨. -->
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/room_background"
-        android:layout_width="0dp"
-        android:layout_height="200dp"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="#B2F1AD" />
-
-    <LinearLayout
-        android:id="@+id/room_name_container"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="25dp"
-        android:layout_marginTop="45dp"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/room_background"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="방 이름"
-            android:textSize="16dp"
-            android:textStyle="bold"/>
-        <!-- TODO : (chohee) 스타일 프로필 EditText랑 똑같음. 로그인 쪽 꺼 받아서 쓰기 -->
-        <androidx.appcompat.widget.AppCompatEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="방 이름을 입력해주세요.\n(ex. 자유롭게 5km 뛰어요)"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="end"
-            android:text="0 / 20자"
-            android:textSize="13dp"
-            android:textColor="#636770" />
-    </LinearLayout>
+        android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- TODO : (chohee) 로그인 리베이스 후, 툴바 스타일 추가하기 -->
+            <!-- TODO : (chohee) 로그인 리베이스 후, 뒤로가기 드로어블로 바꾸기 -->
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:title="방 만들기"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:navigationIcon="@drawable/ic_add" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/room_background"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                app:layout_constraintTop_toBottomOf="@id/toolbar"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="#B2F1AD" />
+
+            <LinearLayout
+                android:id="@+id/room_name_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginTop="45dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@id/room_background"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="방 이름"
+                    android:textSize="16dp"
+                    android:textStyle="bold"/>
+
+                <!-- TODO : (chohee) 스타일 프로필 EditText랑 똑같음. 로그인 쪽 꺼 받아서 쓰기 -->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="0 / 20자"
+                    android:textSize="13dp"
+                    android:textColor="#636770" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/limited_people_count_container"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@id/room_name_container"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="제한 인원"
+                    android:textSize="16dp"
+                    android:textStyle="bold"/>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="0명"
+                    android:gravity="center"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/goal_distance_container"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@id/limited_people_count_container"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="목표 거리"
+                    android:textSize="16dp"
+                    android:textStyle="bold"/>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="0km"
+                    android:gravity="center"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/pace_container"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@id/goal_distance_container"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="페이스"
+                    android:textSize="16dp"
+                    android:textStyle="bold"/>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="0' 00''"
+                    android:gravity="center"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/limited_time_container"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@id/pace_container"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="제한 시간"
+                    android:textSize="16dp"
+                    android:textStyle="bold"/>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="0분"
+                    android:gravity="center"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/start_time_container"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="25dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@id/limited_time_container"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="시작 시간"
+                    android:textSize="16dp"
+                    android:textStyle="bold"/>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="오전 12:00"
+                    android:gravity="center"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/create_button"
+                android:layout_width="0dp"
+                android:layout_height="88dp"
+                android:layout_marginTop="42dp"
+                android:text="방 만들기"
+                android:textColor="@color/main_white"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:background="@color/text_gray"
+                app:layout_constraintTop_toBottomOf="@id/start_time_container"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</FrameLayout>
