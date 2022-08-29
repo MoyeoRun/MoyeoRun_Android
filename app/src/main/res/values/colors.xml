@@ -9,6 +9,7 @@
     <color name="main_green">#00F2B8</color>
     <color name="main_yellow">#FFDD64</color>
     <color name="main_light_blue">#EEF4FF</color>
+    <color name="main_gray">#DDDDDD</color>
 
     <!-- text colors -->
     <color name="text_default_black">#333333</color>
