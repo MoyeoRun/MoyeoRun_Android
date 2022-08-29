@@ -19,7 +19,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val binding = FragmentHomeBinding.inflate(inflater, container, false)
-        binding.addButton.setOnDebounceClickListener {
+        binding.createRoomButton.setOnDebounceClickListener {
             val action = HomeFragmentDirections.actionHomeToCreateRoom()
             it?.findNavController()?.navigate(action)
         }

@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="18dp"
+    android:padding="24dp"
     tools:context=".home.HomeFragment">
 
     <LinearLayout
         android:id="@+id/welcome_container"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintTop_toTopOf="parent"
@@ -18,19 +19,29 @@
 
         <TextView
             android:id="@+id/nick_name"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="9"
             android:text="주영님, \n함께 달려 볼까요?"
             android:textStyle="bold"
-            android:textSize="24dp" />
+            android:textSize="24dp"
+            android:textColor="@color/text_default_black" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/add_button"
+        <View
             android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <!-- TODO : (chohee) 버튼 스타일 적용해줘야 함 -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/create_room_button"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_add" />
+            android:layout_gravity="end"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="8dp"
+            android:text="방 만들기"
+            android:textColor="@color/text_white"
+            android:textSize="12dp"/>
 
     </LinearLayout>
 
