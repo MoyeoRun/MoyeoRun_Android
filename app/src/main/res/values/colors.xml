@@ -16,15 +16,21 @@
     <color name="text_gray">#828282</color>
     <color name="text_hint_gray">#A9A9A9</color>
     <color name="text_white">#FFFFFF</color>
+    <color name="text_blue">#1162FF</color>
 
     <!-- Line colors -->
     <color name="line_dialog_divider">#EBECEF</color>
 
     <!-- button colors -->
-    <color name="button_pressed_true">#0047D0</color>
+    <color name="button_pressed_true">#1162FF</color>
     <color name="button_enable_false">#C4C4C4</color>
     <color name="button_text_enable_false">#828282</color>
+    <color name="button_gray">#F0F0F0</color>
 
     <!-- edittext colors -->
     <color name="edittext_default_stroke">#D4D4D4</color>
+
+    <!-- background colors -->
+    <color name="background_gray">#F0F0F0</color>
+    <color name="background_blue">#1162FF</color>
 </resources>

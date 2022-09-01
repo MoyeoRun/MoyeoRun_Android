@@ -50,50 +50,74 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="15dp"
         app:layout_constraintTop_toBottomOf="@id/welcome_container"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:visibility="visible">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="9dp"
+            android:layout_marginBottom="16dp"
             android:text="참여중인 러닝"
             android:textSize="18dp"
+            android:textColor="@color/text_default_black"
             android:textStyle="bold" />
 
         <include
-            layout="@layout/layout_room_thumbnail" />
+            layout="@layout/item_room_list" />
 
     </LinearLayout>
-
+    
     <LinearLayout
-        android:id="@+id/room_list_container"
+        android:id="@+id/toggle_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="24dp"
+        android:orientation="horizontal"
+        android:background="@color/background_gray"
         app:layout_constraintTop_toBottomOf="@id/join_container"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
-
+        
         <TextView
+            android:id="@+id/button_current_room_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="9dp"
-            android:text="실시간 러닝방"
-            android:textSize="18dp"
-            android:textStyle="bold" />
-        
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/current_room_list"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:gravity="center"
+            android:text="실시간 러닝 방"
+            android:textSize="14dp"
+            android:textColor="@color/text_white"
+            android:textStyle="bold"
+            tools:background="@color/button_pressed_true"/>
+
+        <TextView
+            android:id="@+id/button_recruit_room_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:clipToPadding="false"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/layout_room_thumbnail" />
-
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:gravity="center"
+            android:text="참여 모집 중인 방"
+            android:textSize="14dp"
+            android:textColor="@color/text_blue"
+            android:textStyle="bold"
+            tools:background="@color/button_gray"/>
+        
     </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/room_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@id/toggle_container"
+        app:layout_constraintStart_toStartOf="@id/toggle_container"
+        app:layout_constraintEnd_toEndOf="@id/toggle_container"
+        tools:listitem="@layout/item_room_list" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
