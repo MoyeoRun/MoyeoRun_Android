@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- TODO : (초희) 각 아이템의 아이콘을 피그마 디자인으로 변경해야 합니다. -->
+    <item
+        android:id="@+id/home_nav_graph"
+        android:icon="@drawable/ic_home"
+        android:title="Home" />
+    <item
+        android:id="@+id/search_nav_graph"
+        android:icon="@drawable/ic_home"
+        android:title="Search" />
+    <item
+        android:id="@+id/record_nav_graph"
+        android:icon="@drawable/ic_home"
+        android:title="Record" />
+    <item
+        android:id="@+id/profile_nav_graph"
+        android:icon="@drawable/ic_home"
+        android:title="Profile" />
+</menu>

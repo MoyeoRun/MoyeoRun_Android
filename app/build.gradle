@@ -74,6 +74,7 @@ dependencies {
     def glide_version = '4.13.1'
     def datastore_preferences_version = '1.0.0'
     def retrofit_version = '2.9.0'
+    def navigation_version = '2.4.2'
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
@@ -107,4 +108,8 @@ dependencies {
 
     // Coroutine
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0'
+
+    // Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigation_version"
 }
