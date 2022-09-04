@@ -7,6 +7,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
+import com.moyerun.moyeorun_android.MainActivity
 import com.moyerun.moyeorun_android.R
 import com.moyerun.moyeorun_android.common.Lg
 import com.moyerun.moyeorun_android.common.extension.*
@@ -122,8 +123,7 @@ class ProfileEditActivity : AppCompatActivity() {
         observeEvent(viewModel.profileEvent) {
             when (it) {
                 ProfileEvent.SUCCESS_SIGN_UP -> {
-                    // Todo: 환영 액티비티로 이동
-                    Lg.d("observeEvent : Go to welcome activity!")
+                    startActivity(Intent(this, MainActivity::class.java))
                 }
             }
         }

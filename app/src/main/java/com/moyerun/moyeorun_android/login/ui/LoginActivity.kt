@@ -14,6 +14,7 @@ import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.CommonStatusCodes
 import com.moyerun.moyeorun_android.BuildConfig
+import com.moyerun.moyeorun_android.MainActivity
 import com.moyerun.moyeorun_android.R
 import com.moyerun.moyeorun_android.common.Lg
 import com.moyerun.moyeorun_android.common.extension.observeEvent
@@ -68,8 +69,8 @@ class LoginActivity : AppCompatActivity() {
         observeEvent(viewModel.loginEvent) { event ->
             when (event) {
                 is LoginEvent.RegisteredUser -> {
-                    // Todo: 메인 화면으로 이동
-                    Lg.d("Login!")
+                    startActivity(Intent(this, MainActivity::class.java))
+                    finish()
                 }
                 is LoginEvent.NewUser -> {
                     ProfileEditActivity.startActivity(this, event.signUpMetaData)
