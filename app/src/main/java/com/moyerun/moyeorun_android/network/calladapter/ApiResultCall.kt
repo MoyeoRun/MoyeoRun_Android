@@ -14,7 +14,7 @@ class ApiResultCall<S>(
     override fun enqueue(callback: Callback<ApiResult<S>>) {
         delegate.enqueue(object : Callback<S> {
             override fun onResponse(call: Call<S>, response: Response<S>) {
-                val requestUrl = delegate.request().url().toString()
+                val requestUrl = delegate.request().url.toString()
 
                 // status code 200번대.
                 if (response.isSuccessful) {
@@ -76,7 +76,7 @@ class ApiResultCall<S>(
                     Response.success(
                         ApiResult.Failure(
                             NetworkException(
-                                call.request().url().toString(),
+                                call.request().url.toString(),
                                 throwable
                             )
                         )
