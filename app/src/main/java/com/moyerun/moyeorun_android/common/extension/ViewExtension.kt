@@ -21,7 +21,7 @@ fun View.setOnDebounceClickListener(interval: Long = 1000L, action: (View?) -> U
 }
 
 fun TextView.setTextIfNew(text: CharSequence?) {
-    if (this.text != text) {
+    if (this.text.contentEquals(text).not()) {
         setText(text)
     }
 }

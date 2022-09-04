@@ -3,6 +3,7 @@ package com.moyerun.moyeorun_android.login.ui
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.moyerun.moyeorun_android.common.EventLiveData
+import com.moyerun.moyeorun_android.common.Lg
 import com.moyerun.moyeorun_android.common.MutableEventLiveData
 import com.moyerun.moyeorun_android.login.ProviderType
 import com.moyerun.moyeorun_android.login.SignUpMetaData
@@ -43,6 +44,7 @@ class LoginViewModel @Inject constructor(
                         LoginEvent.RegisteredUser
                     }
                 }.onFailure {
+                    Lg.fe(it)
                     _loginEvent.event = LoginEvent.Error
                 }
             _isLoading.value = false
