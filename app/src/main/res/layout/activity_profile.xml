@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".profile.ui.ProfileEditActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_profile"
+        style="@style/Toolbar.DividerStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_toolbar_back">
+
+        <TextView
+            android:id="@+id/textview_profile_title"
+            style="@style/Toolbar.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            tools:text="기본 정보" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <com.moyerun.moyeorun_android.views.BadgeRoundImageView
+        android:id="@+id/badgeimageview_profile_image"
+        android:layout_width="112dp"
+        android:layout_height="112dp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_profile" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:paddingHorizontal="21dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/badgeimageview_profile_image">
+
+        <TextView
+            style="@style/Profile.InputLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/profile_nickname" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edittext_profile_nickname"
+            style="@style/Profile.Input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="@string/profile_nickname"
+            android:inputType="text" />
+
+        <TextView
+            style="@style/Profile.InputLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/profile_gender" />
+
+        <RadioGroup
+            android:id="@+id/radiogroup_profile_gender"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radiobutton_profile_woman"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/selector_gender_woman"
+                android:button="@android:color/transparent" />
+
+            <Space
+                android:layout_width="9dp"
+                android:layout_height="match_parent" />
+
+            <RadioButton
+                android:id="@+id/radiobutton_profile_man"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/selector_gender_man"
+                android:button="@android:color/transparent" />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <com.moyerun.moyeorun_android.views.RoundButton
+        android:id="@+id/button_profile_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="21dp"
+        android:layout_marginBottom="33dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="다음" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

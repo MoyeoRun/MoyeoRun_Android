@@ -21,7 +21,7 @@ fun FirebaseCrashlytics.recordException(logLevel: LogLevel, message: String, thr
 class FirebaseLogException : Exception {
     constructor(logLevel: LogLevel, message: String) : super("$logLevel : $message")
 
-    constructor(logLevel: LogLevel, cause: Throwable) : super(logLevel.toString(), cause)
+    constructor(logLevel: LogLevel, cause: Throwable) : super("$logLevel : $cause", cause)
 
     constructor(
         logLevel: LogLevel,

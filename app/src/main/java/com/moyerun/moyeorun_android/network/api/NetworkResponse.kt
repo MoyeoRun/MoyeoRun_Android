@@ -1,5 +1,5 @@
 package com.moyerun.moyeorun_android.network.api
 
-interface ApiService {
-
-}
+data class NetworkResponse<T>(
+    val data: T
+)

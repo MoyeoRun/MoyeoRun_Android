@@ -9,7 +9,7 @@ import android.view.Window
 import androidx.fragment.app.DialogFragment
 import com.moyerun.moyeorun_android.common.extension.isActivityDestroyed
 
-open class RoundDialogFragment : DialogFragment() {
+abstract class RoundDialogFragment : DialogFragment() {
 
     private var dismissOnPause = false
 

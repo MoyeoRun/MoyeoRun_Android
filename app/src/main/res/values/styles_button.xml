@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="RectangleButtonTheme">
         <item name="buttonStyle">@style/RectangleButton</item>
     </style>
+
     <style name="RectangleButton" parent="Widget.AppCompat.Button">
         <item name="android:background">@drawable/selector_rectangle_button</item>
         <item name="android:textSize">21dp</item>
@@ -13,9 +15,11 @@
     <style name="RoundButtonTheme">
         <item name="buttonStyle">@style/RoundButton</item>
     </style>
+
     <style name="RoundButton" parent="Widget.AppCompat.Button">
         <item name="android:background">@drawable/selector_round_button</item>
         <item name="android:textSize">21dp</item>
-        <item name="android:textColor">@drawable/selector_round_button_text</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/main_white</item>
     </style>
 </resources>
